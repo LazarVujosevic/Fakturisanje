@@ -1,0 +1,22 @@
+﻿@model Fakturisanje.Models.Fakture
+@{
+    ViewBag.Title = "NovaFaktura";
+}
+
+<h2>Nova Faktura</h2>
+@Html.BeginForm("Save", "Fakturisanje")
+{
+<div class="form-group">
+    @Html.LabelFor(p => p.Ukupno, "Ukupno")
+    @Html.TextAreaFor(p => p.Ukupno, new { @class = "form-control" })
+
+    @Html.LabelFor(p => p.Br_Dokumenta, "Broj dokumenta")
+    @Html.TextAreaFor(p => p.Br_Dokumenta, new { @class = "form-control" })
+
+    @Html.HiddenFor(p => p.Id)
+
+    <button type="submit" id="btn_id" class="btn btn-success"  > Sacuvaj </button>
+</div>
+
+
+

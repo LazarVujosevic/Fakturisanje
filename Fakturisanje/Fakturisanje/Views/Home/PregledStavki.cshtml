@@ -1,0 +1,33 @@
+﻿@model IEnumerable< Fakturisanje.Models.Stavke>
+@{
+    int? a = 0;
+    ViewBag.Title = "PregledStavki";
+}
+
+<h2>Pregled Stavki</h2>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Redni broj</th>
+            <th> Cena </th>
+            <th> Kolicina </th>
+            <th> Ukupno </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.Redni_broj</td>
+                <td>@p.Cena</td>
+                <td>@p.Kolicina </td>
+                <td>@p.Ukupno</td>
+                <td>@Html.ActionLink("Izmeni", "Edit", "Home", new { Id = p.Redni_broj }, null) @Html.ActionLink("Obrisi", "Delete", "Home", new { Id = p.Redni_broj }, null) </td>
+            </tr>
+            a = a + p.Ukupno;
+        }
+    </tbody>
+</table>
+<p>Ukupno @a  @Html.ActionLink("Fakturisi","NovaFaktura","Fakturisanje",new { Ukupno = a},null)</p>
+

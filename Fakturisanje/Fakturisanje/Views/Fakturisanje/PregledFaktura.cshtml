@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Fakturisanje.Models.Fakture>
+@{
+    
+    ViewBag.Title = "PregledFaktura";
+}
+
+<h2>Pregled Faktura</h2>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th> Datum</th>
+            <th> Broj fakture </th>
+            <th> Ukupno </th>
+            <th> Akcije </th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        @foreach (var p in Model)
+        {
+            
+            <tr>               
+                <td>@p.Datum_Fakture.ToString("dd/MM/yyyy")</td>
+                <td>@p.Br_Dokumenta</td>
+                <td>@p.Ukupno </td>
+                <td>@Html.ActionLink("Izmeni","Edit","Fakturisanje",new {Id = p.Id},null)   @Html.ActionLink("Obrisi", "Delete", "Fakturisanje", new { Id = p.Id }, null)</td>
+            </tr>
+            
+        }
+        
+    </tbody>
+</table>
+
+
+
+
